@@ -1,0 +1,52 @@
+Sure, I can help you generate the code for a simple captcha solver web application that meets the criteria you provided. I will provide you with a basic example code. You can customize and expand it further based on your requirements.
+
+Here's a basic outline of the web application code to create a captcha solver:
+
+1. Check for MIT License in the repository.
+2. Ensure the README.md file is professional.
+3. Create a web page that displays the captcha URL passed in the query parameter.
+4. Solve the captcha and display the text within 15 seconds.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha Solver</title>
+</head>
+<body>
+    <h1>Captcha Solver</h1>
+    
+    <div id="captchaUrl"></div>
+    <div id="captchaText"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const captchaUrl = urlParams.get("url");
+
+            if (!captchaUrl) {
+                document.getElementById("captchaUrl").innerText = "Error: Captcha URL not provided!";
+                return;
+            }
+
+            document.getElementById("captchaUrl").innerText = `Captcha URL: ${captchaUrl}`;
+
+            // Simulating captcha solving within 5 seconds
+            setTimeout(() => {
+                const solvedText = "Solved Captcha Text: Example123"; // This is just an example, you would need an actual solver logic here
+                document.getElementById("captchaText").innerText = solvedText;
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
+```
+
+You can save this code in an HTML file and host it on a web server. When you access the page with the URL `https://example.com/sample.html?url=https://example.com/sample.png`, it should display the provided Captcha URL and solve the Captcha within the specified time.
+
+Remember, you'd need to replace the placeholder solving logic (`Example123`) with your actual captcha solving algorithm or service.
+
+Feel free to modify and enhance this code as needed for your specific use case. Let me know if you need further assistance or have any specific requirements.

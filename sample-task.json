@@ -1,0 +1,21 @@
+{
+  "email": "25ds2000002@ds.study.iitm.ac.in",
+  "secret": "mysharedsecret123",
+  "task": "captcha-solver-001",
+  "round": 1,
+  "nonce": "abc123-nonce-001",
+  "brief": "Create a captcha solver that handles ?url=https://example.com/sample.png. Default to attached sample.",
+  "checks": [
+    "Repo has MIT license",
+    "README.md is professional",
+    "Page displays captcha URL passed at ?url=...",
+    "Page displays solved captcha text within 15 seconds"
+  ],
+  "evaluation_url": "https://example.com/notify",
+  "attachments": [
+    {
+      "name": "sample.png",
+      "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA"
+    }
+  ]
+}
