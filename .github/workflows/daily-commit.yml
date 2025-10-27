@@ -1,9 +1,9 @@
 name: Daily Commit
 
-# Run at 10:30 AM UTC every day (replace with your desired time)
 on:
+  workflow_dispatch:   # allows manual trigger
   schedule:
-    - cron: '30 10 * * *'
+    - cron: '0 6 * * *'  # daily at 06:00 UTC
 
 jobs:
   commit:
@@ -12,21 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Create a file or update timestamp (25ds2000002@ds.study.iitm.ac.in)
+      - name: Add commit for 25ds2000002@ds.study.iitm.ac.in
         run: |
-          echo "Daily update $(date)" >> daily-update.txt
-
-      - name: Configure Git
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-
-      - name: Commit changes
-        run: |
-          git add daily-update.txt
-          git commit -m "Daily commit from workflow" || echo "No changes to commit"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          echo "Daily commit $(date)" >> daily.txt
+          git config --global user.name "GitHub Action"
+          git config --global user.email "25ds2000002@ds.study.iitm.ac.in"
+          git add daily.txt
+          git commit -m "Daily commit"
+          git push
