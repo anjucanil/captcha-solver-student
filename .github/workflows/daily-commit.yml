@@ -1,29 +1,22 @@
 name: Daily Commit
 
 on:
-  workflow_dispatch:   # allows manual trigger
   schedule:
-    - cron: '0 6 * * *'  # daily at 06:00 UTC
+    - cron: '0 9 * * *'  # Daily at 09:00 UTC
+  workflow_dispatch:  # Manual trigger for testing
 
 jobs:
-  commit:
+  daily-commit:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-    
       - name: Add commit for 25ds2000002@ds.study.iitm.ac.in
-
         run: |
           echo "Daily commit $(date)" >> daily.txt
-          git config --global user.name "GitHub Action"
+          git config --global user.name "25ds2000002"
           git config --global user.email "25ds2000002@ds.study.iitm.ac.in"
-          git config --global user.name "anjucanil"
           git add daily.txt
           git commit -m "Daily commit by 25ds2000002"
-          git push
-    
-          git add daily.txt
-          git commit -m "Daily commit"
           git push
