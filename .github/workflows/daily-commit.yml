@@ -2,8 +2,8 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # daily at 09:00 UTC
-  workflow_dispatch:
+    # Runs at 12:00 UTC every day
+    - cron: '0 12 * * *'
 
 jobs:
   daily-commit:
@@ -12,13 +12,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} # ensure it uses proper token
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Add commit for 25ds2000002@ds.study.iitm.ac.in
+      - name: Configure Git
         run: |
-          echo "Daily commit $(date)" >> daily.txt
           git config user.name "25ds2000002"
           git config user.email "25ds2000002@ds.study.iitm.ac.in"
+
+      - name: Add daily commit
+        run: |
+          echo "Daily commit $(date)" >> daily.txt
           git add daily.txt
           git commit -m "Daily commit by 25ds2000002" || echo "No changes to commit"
           git push
