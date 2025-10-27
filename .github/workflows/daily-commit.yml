@@ -12,7 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+    
       - name: Add commit for 25ds2000002@ds.study.iitm.ac.in
+
         run: |
           echo "Daily commit $(date)" >> daily.txt
           git config --global user.name "GitHub Action"
